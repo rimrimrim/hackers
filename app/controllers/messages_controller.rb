@@ -1,5 +1,6 @@
 class MessagesController < ApplicationController
   def index
+    @messages = Message.all
   end
 
   def new
@@ -14,6 +15,10 @@ class MessagesController < ApplicationController
     else
       render 'new'
     end
+  end
+
+  def show
+    @message = Message.find(params[:id])
   end
 
   private
