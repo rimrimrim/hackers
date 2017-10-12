@@ -6,5 +6,7 @@
     <p class="message-desc"><%= @message.description %></p>
     <div class="link btn-group">
       <%= link_to "Back", root_path, class: "btn btn-default" %>
+      <%= link_to "Edit", edit_message_path(@message), class: "btn btn-default" %>
+      <%= link_to "削除", message_path(@message), method: :destroy, data: {confirm: "本当に削除しますか？"}, class: "btn btn-default" %>
   </div>
 </div>
