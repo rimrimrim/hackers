@@ -9,9 +9,30 @@
   </head>
 
   <body>
+    <nav class="navbar navbar-default">
+      <div class="containar">
+        <%= link_to "heackers", root_path, class: "navbar-brand" %>
+      </div>
+
+      <ul class="navbar-nav nav navbar-right">
+        <% if user_signed_in? %>
+        <li><%= link_to "サインアウト", destroy_user_session_path, mehotd: :delete %></li>
+        <% else %>
+        <li><%= link_to "ログイン" , new_user_session_path %></li>
+        <li><%= link_to "サインアップ", new_user_registration_path %></li>
+        <% end %>
+      </ul>
+
+      <% if user_signed_in? %>
+      <p><%= link_to "新しい投稿", new_message_path, class: "navbar-text navbar-link" %></p>
+      <% end %>
+      </div>
+    </nav>
+
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
 
     <%= yield %>
+
   </body>
 </html>

@@ -6,11 +6,11 @@ class MessagesController < ApplicationController
   end
 
   def new
-	   @message = Message.new
+	   @message = current_user.messages.build
   end
 
   def create
-    @message = Message.new(messages_params)
+    @message = current_user.messages.build(messages_params)
 
     if @message.save
       redirect_to root_path
@@ -34,7 +34,7 @@ class MessagesController < ApplicationController
     if @message.update(messages_params)
       redirect_to message_path
     else
-      reder 'edit'
+      render 'edit'
     end
   end
 
